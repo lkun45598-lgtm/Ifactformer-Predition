@@ -1,0 +1,22 @@
+log_dir: results_gba_big
+data_dir: /home/lz/IFactFormer_GBA/data_gba_big
+
+model:
+    in_dim: 2
+    out_dim: 2
+    in_time_window: 7
+    out_time_window: 20   # 仅表示目标天数；实际训练步数由 --rollout 指定
+    dim: 128
+    heads: 8
+    depth: 1
+    dim_head: 64
+    n_layer: 10
+    model: IFactFormer_m
+
+training:
+    epochs: 30
+    lr: 0.0005
+    batch_size: 8
+    scheduler_step: 5
+    scheduler_gamma: 0.7
+pos_length: [1.0, 1.0]   # 旋转位置编码的物理域长度；可调（原 RB 为 [3,1]/72 点）

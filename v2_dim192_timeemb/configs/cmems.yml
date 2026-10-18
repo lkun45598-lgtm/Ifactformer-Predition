@@ -1,0 +1,21 @@
+log_dir: results_cmems_v2
+data_dir: /home/lz/IFactFormer_GBA/data_cmems
+pos_length: [1.0, 0.885]   # 轴0=纬向(约2211 km)、轴1=经向(约1957 km)，按物理比例
+
+model:
+    in_dim: 2
+    out_dim: 2
+    in_time_window: 7
+    out_time_window: 1
+    dim: 192
+    heads: 8
+    dim_head: 64
+    depth: 1
+    n_layer: 10
+    n_time: 4          # 目标日年周期特征：sin/cos(1、2 次谐波)
+    model: IFactFormer_m
+
+training:
+    epochs: 12
+    lr: 0.0004
+    batch_size: 2
